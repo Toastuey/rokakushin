@@ -1,8 +1,10 @@
 """
 This file is responsible for converting map data into h3 hexes and creating a pandas dataframe to be used.
 """
+from src import constants
+import h3
 
-def convert_to_hex():
+def convert_to_hex(inlat, inlon):
     """
     Convert the provided longitude/latitude pairs into h3 hexes
 
@@ -15,11 +17,12 @@ def convert_to_hex():
     Raises:
         tbd
     """
-    pass
+    return [h3.latlng_to_cell(lat, lon, constants.RESOLUTION) for lat, lon in zip(inlat, inlon)]
 
-def create_dataframe():
+
+def create_agg(df):
     """
-    Creates a suitable pandas dataframe with a proper aggregate value
+    Creates a correct aggregate based on the data
     
     Args:
         tbd
@@ -30,4 +33,6 @@ def create_dataframe():
     Raises:
         tbd
     """
-    pass
+    agg = df.groupby(constants.HEX_ID, as_index=False).size().rename(columns={"size": constants.HEX_NAME})
+    agg[constants.HEIGHT_VALUE] = agg[constants.HEX_NAME]*constants.HEIGHT_FLAT_SCALER
+    return agg

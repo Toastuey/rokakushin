@@ -1,48 +1,50 @@
 """
 This file is responsible for processing the created pandas dataframe to visualize data and generate a suitable HTML.
 """
+from src import constants
+import pydeck as pdk
 
-def create_layer():
+def _fill_color():
     """
-    Create a pydeck layer from the provided data.
-    
+    A function that defines the fill color for the hex map
+
     Args:
-        tbd
-    
+        None
+            
     Returns:
-        tbd
+        None
         
     Raises:
-        tbd
+        None
     """
-    pass
+    return f"[{constants.COLOR_R}, 255 - {constants.HEX_NAME} * {constants.COLOR_SENSITIVITY}, {constants.COLOR_B}]"
 
-def set_view_state():
+
+def render_map(agg, html_name):
     """
-    Sets the view state of the pydeck.
+    Create a layer and HTML from the data.
     
     Args:
-        tbd
-    
-    Returns:
-        tbd
-        
-    Raises:
-        tbd
-    """
-    pass
-
-def generate_html():
-    """
-    Create a deck and HTML from the data.
-    
-    Args:
-        tbd
+        param1: The aggregate data to build the map on.
+        param2: Name of the output HTML.
         
     Returns:
-        tbd
+        None
         
     Raises:
-        tbd
+        None
     """
-    pass
+    layer = pdk.Layer(
+        "H3HexagonLayer",
+        agg,
+        get_hexagon=constants.HEX_ID,
+        get_fill_color=_fill_color(),
+        get_elevation=constants.HEIGHT_VALUE,
+        elevation_scale=constants.ELEVATION_SCALE,
+        extruded=True,
+        pickable=True,
+        opacity=constants.COLOR_OPACITY,
+    )   
+    
+    deck = pdk.Deck(layers=[layer])
+    deck.to_html(html_name)
