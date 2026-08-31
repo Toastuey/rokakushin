@@ -1,7 +1,7 @@
 """
 Main Thread of Execution
 """
-from src import data_io, hex_processing, visualize
+from src import data_io, hex_processing, visualize, constants
 
 if __name__ == '__main__':
     # First get and trim down the relevant data we want
@@ -9,7 +9,7 @@ if __name__ == '__main__':
     df = data_io.select_relevant_columns(df)
 
     # Now create the corresponding hexes for each entry based on lat/lon
-    df["hex_id"] = hex_processing.convert_to_hex(df["lat"], df["lon"])
+    df[constants.HEX_ID] = hex_processing.convert_to_hex(df["lat"], df["lon"])
     agg = hex_processing.create_agg(df)
 
     # Now visualize and create the corresponding HTML
