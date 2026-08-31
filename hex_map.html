@@ -1,0 +1,3372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.14.0/dist/maplibre-gl.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.3.*/dist/index.js'></script>
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/@deck.gl/widgets@~9.3.*/dist/stylesheet.css />
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+
+#deck-container .error_text {
+  color: red;
+  background: none;
+  position: absolute;
+  z-index: 100;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "latitude": 32.750501371473355,
+    "longitude": 137.86502018025078,
+    "pitch": 40,
+    "zoom": 5
+  },
+  "layers": [
+    {
+      "@@type": "H3HexagonLayer",
+      "data": [
+        {
+          "height_value": 110,
+          "hex_id": "842e001ffffffff",
+          "quake_count": 11
+        },
+        {
+          "height_value": 80,
+          "hex_id": "842e003ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e005ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e007ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e00bffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842e011ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e013ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842e017ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842e019ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 140,
+          "hex_id": "842e01bffffffff",
+          "quake_count": 14
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e01dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e021ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e025ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e029ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e02bffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e031ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 120,
+          "hex_id": "842e033ffffffff",
+          "quake_count": 12
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e035ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e037ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e039ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e03bffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e03dffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e041ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e045ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e047ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e049ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e04dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e053ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e057ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e059ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e06bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e085ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e08dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e0a7ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e0a9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e0b1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e0b5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e0bdffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e0cdffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e0e1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e0e3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e0e5ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842e0e9ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 110,
+          "hex_id": "842e0edffffffff",
+          "quake_count": 11
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e103ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e111ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e113ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842e115ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e117ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e11bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e11dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e123ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e127ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e12bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e131ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e133ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e135ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e137ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e139ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e13bffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e13dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e153ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e15bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e181ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e185ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e187ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842e189ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 130,
+          "hex_id": "842e18dffffffff",
+          "quake_count": 13
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e193ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e195ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e199ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e19bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e19dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1a3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e1a9ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e1abffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1b1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1b3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e1b9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1bbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1bdffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1c1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842e1c3ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e1c5ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e1c7ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e1c9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 100,
+          "hex_id": "842e1cbffffffff",
+          "quake_count": 10
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e1d1ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1d3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 140,
+          "hex_id": "842e1d5ffffffff",
+          "quake_count": 14
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1d7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e1d9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1dbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842e1ddffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 80,
+          "hex_id": "842e1e3ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e1e5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e1e7ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842e1ebffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e1edffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e201ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e21dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e223ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e231ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e235ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e237ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e23dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 100,
+          "hex_id": "842e281ffffffff",
+          "quake_count": 10
+        },
+        {
+          "height_value": 150,
+          "hex_id": "842e283ffffffff",
+          "quake_count": 15
+        },
+        {
+          "height_value": 250,
+          "hex_id": "842e285ffffffff",
+          "quake_count": 25
+        },
+        {
+          "height_value": 180,
+          "hex_id": "842e287ffffffff",
+          "quake_count": 18
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e289ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842e28bffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e28dffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842e291ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e297ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 90,
+          "hex_id": "842e299ffffffff",
+          "quake_count": 9
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e29bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e29dffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 80,
+          "hex_id": "842e2a1ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 90,
+          "hex_id": "842e2a3ffffffff",
+          "quake_count": 9
+        },
+        {
+          "height_value": 140,
+          "hex_id": "842e2a5ffffffff",
+          "quake_count": 14
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842e2a7ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 320,
+          "hex_id": "842e2a9ffffffff",
+          "quake_count": 32
+        },
+        {
+          "height_value": 670,
+          "hex_id": "842e2abffffffff",
+          "quake_count": 67
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e2b1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e2b5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e2bdffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e2c1ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842e2c3ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e2c7ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e2cbffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e2cdffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e2d1ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e2d3ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e2d5ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842e2d7ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e2d9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842e2dbffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e2ddffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e2e1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e2e3ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e2e7ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e2ebffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e403ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e409ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e4ddffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e605ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e607ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e609ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e60dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e611ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e613ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e615ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e617ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e61dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e621ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e625ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e629ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e62bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e641ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e643ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842e64bffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e655ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e65bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e65dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e66bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e6cbffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e6cdffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e6d9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e6edffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e703ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e70bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e711ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 180,
+          "hex_id": "842e715ffffffff",
+          "quake_count": 18
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e717ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842e719ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e721ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e723ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e739ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842e73bffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e745ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842e749ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e74dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e751ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e757ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e761ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e763ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e851ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e8d9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842e8dbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ea87ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ea93ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ea9bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842eab7ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842eac1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842eac5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842eac9ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842eacbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842eacdffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ead1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ead9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842eadbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842eaddffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee01ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee21ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee25ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee35ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee3dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee49ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee61ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842ee65ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee67ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee69ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ee91ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842eea7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842eeadffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842eed3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ef05ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842ef09ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ef0bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842ef0dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ef45ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ef4dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ef59ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ef5dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842ef61ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842ef63ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842ef6dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f401ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f403ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f405ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f407ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f409ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f40bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f40dffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f411ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f41bffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 240,
+          "hex_id": "842f421ffffffff",
+          "quake_count": 24
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842f423ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f425ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f427ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f429ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f42bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 110,
+          "hex_id": "842f42dffffffff",
+          "quake_count": 11
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f431ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f433ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f435ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f43dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f441ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 160,
+          "hex_id": "842f443ffffffff",
+          "quake_count": 16
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f445ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f447ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f449ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 330,
+          "hex_id": "842f44bffffffff",
+          "quake_count": 33
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f44dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f451ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f453ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f457ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f45bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f45dffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 820,
+          "hex_id": "842f461ffffffff",
+          "quake_count": 82
+        },
+        {
+          "height_value": 100,
+          "hex_id": "842f463ffffffff",
+          "quake_count": 10
+        },
+        {
+          "height_value": 230,
+          "hex_id": "842f465ffffffff",
+          "quake_count": 23
+        },
+        {
+          "height_value": 80,
+          "hex_id": "842f467ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 110,
+          "hex_id": "842f469ffffffff",
+          "quake_count": 11
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f46bffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 160,
+          "hex_id": "842f46dffffffff",
+          "quake_count": 16
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f483ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f48bffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4a5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4a7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4abffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4adffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4b1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4b5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f4b7ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4b9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f4bdffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f4cbffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4cdffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4d5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4d7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4dbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f4ddffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4e1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f4e5ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4e7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f4ebffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f501ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f507ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f511ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f513ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f517ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f519ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f51bffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f51dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f533ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f535ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f539ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f553ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f557ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f55bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f581ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f585ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f589ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f58dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f593ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f595ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f59dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 170,
+          "hex_id": "842f5a1ffffffff",
+          "quake_count": 17
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f5a3ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f5a5ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 140,
+          "hex_id": "842f5a7ffffffff",
+          "quake_count": 14
+        },
+        {
+          "height_value": 260,
+          "hex_id": "842f5a9ffffffff",
+          "quake_count": 26
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f5abffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 160,
+          "hex_id": "842f5adffffffff",
+          "quake_count": 16
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f5b1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f5b5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f5b9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 60,
+          "hex_id": "842f5bdffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f5c3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f5c7ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f5cbffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f5d1ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f5d9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 230,
+          "hex_id": "842f5dbffffffff",
+          "quake_count": 23
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f5ddffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f5e1ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f5e3ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 90,
+          "hex_id": "842f5e5ffffffff",
+          "quake_count": 9
+        },
+        {
+          "height_value": 80,
+          "hex_id": "842f5e7ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f5e9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f5ebffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f5edffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f601ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f603ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f605ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f607ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f609ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f60bffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f613ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f617ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f61dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f621ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f623ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f627ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f62bffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 200,
+          "hex_id": "842f635ffffffff",
+          "quake_count": 20
+        },
+        {
+          "height_value": 90,
+          "hex_id": "842f637ffffffff",
+          "quake_count": 9
+        },
+        {
+          "height_value": 140,
+          "hex_id": "842f639ffffffff",
+          "quake_count": 14
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f63dffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f641ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f643ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f651ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f653ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 140,
+          "hex_id": "842f655ffffffff",
+          "quake_count": 14
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f657ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f659ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f65bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 90,
+          "hex_id": "842f65dffffffff",
+          "quake_count": 9
+        },
+        {
+          "height_value": 50,
+          "hex_id": "842f681ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 90,
+          "hex_id": "842f683ffffffff",
+          "quake_count": 9
+        },
+        {
+          "height_value": 230,
+          "hex_id": "842f685ffffffff",
+          "quake_count": 23
+        },
+        {
+          "height_value": 80,
+          "hex_id": "842f689ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 960,
+          "hex_id": "842f68dffffffff",
+          "quake_count": 96
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f695ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f699ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f69dffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6a1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f6a7ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6a9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "842f6adffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6b1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6b3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6b5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6b7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 80,
+          "hex_id": "842f6bbffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6c1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6c5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f6c7ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f6c9ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 40,
+          "hex_id": "842f6cdffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6d1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f6d5ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f6d7ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f6d9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6dbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "842f6ddffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6e1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "842f6e3ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6e5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6e9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 110,
+          "hex_id": "842f6ebffffffff",
+          "quake_count": 11
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f6edffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "842f71bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8430009ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8430251ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8430ab7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8430c1bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8430ca5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8430e43ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8430e8bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8430eedffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "843141bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8431603ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "84316bdffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "84316c7ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "8431717ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a201ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a203ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a205ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a207ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a20dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a211ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a21dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a221ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844a225ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a227ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 390,
+          "hex_id": "844a229ffffffff",
+          "quake_count": 39
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a241ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a24bffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a251ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a253ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a257ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a25bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a25dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a261ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a263ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a269ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a307ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a30bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a30dffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a319ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844a31dffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a341ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a343ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a349ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a34dffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a351ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a355ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a35bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a361ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a36bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a36dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844a485ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a489ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a48dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a493ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a495ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a49bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a49dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a4a9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844a4abffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 260,
+          "hex_id": "844a4b3ffffffff",
+          "quake_count": 26
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a4b9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a4c3ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a4c7ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a4d1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a4d7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a4d9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a4dbffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a4e3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a4ebffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a613ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a619ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a61bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a651ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a681ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a683ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a685ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a687ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a68bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a68dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a691ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a695ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a69bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a6a3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a6abffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a6b1ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a6b3ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a6b7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "844a6b9ffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a6bbffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a6bdffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a6c3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 100,
+          "hex_id": "844a6c5ffffffff",
+          "quake_count": 10
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844a6c7ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a6c9ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a6cbffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a6cdffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a6d3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a6d7ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a6dbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844a6ddffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844a6e3ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844a6ebffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b081ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b083ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b091ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 60,
+          "hex_id": "844b093ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b095ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b099ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 170,
+          "hex_id": "844b09bffffffff",
+          "quake_count": 17
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b0a1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b0a3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b0a5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b0a7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b0abffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b0b5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b0b7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844b0b9ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b0d3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b135ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b137ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 1260,
+          "hex_id": "844b183ffffffff",
+          "quake_count": 126
+        },
+        {
+          "height_value": 130,
+          "hex_id": "844b185ffffffff",
+          "quake_count": 13
+        },
+        {
+          "height_value": 80,
+          "hex_id": "844b187ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 100,
+          "hex_id": "844b18bffffffff",
+          "quake_count": 10
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b191ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b193ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844b195ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b197ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b19bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 210,
+          "hex_id": "844b19dffffffff",
+          "quake_count": 21
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b1a1ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b1a3ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b1a5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b1a7ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844b1a9ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844b1abffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844b1adffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b1b9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b1bbffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b1bdffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b1d1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b1d3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b1d7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b1e3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b1e5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b1e7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b2b7ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b42dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b441ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b44dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 110,
+          "hex_id": "844b463ffffffff",
+          "quake_count": 11
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b469ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b46bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b46dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b491ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b493ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b495ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b4c3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b505ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b507ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b509ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b50dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b519ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b51dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b521ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b52bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 110,
+          "hex_id": "844b541ffffffff",
+          "quake_count": 11
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844b543ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 80,
+          "hex_id": "844b547ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b549ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844b54bffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b54dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b553ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b561ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844b567ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844b56bffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 100,
+          "hex_id": "844b607ffffffff",
+          "quake_count": 10
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b60bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b621ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b625ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 60,
+          "hex_id": "844b627ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b655ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b657ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b65dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b665ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b683ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b693ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b69dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b6cdffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b6d3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b6d9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b6dbffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b6ddffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b703ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b705ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 80,
+          "hex_id": "844b70bffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844b713ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 60,
+          "hex_id": "844b717ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b719ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b71bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b71dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844b723ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b725ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844b727ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b731ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 90,
+          "hex_id": "844b733ffffffff",
+          "quake_count": 9
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b737ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844b73bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b75dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844b76bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 80,
+          "hex_id": "844ba11ffffffff",
+          "quake_count": 8
+        },
+        {
+          "height_value": 90,
+          "hex_id": "844ba13ffffffff",
+          "quake_count": 9
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844ba15ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 60,
+          "hex_id": "844ba17ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844ba19ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ba1bffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 60,
+          "hex_id": "844ba33ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844ba3bffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ba85ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844ba87ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ba89ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ba8dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844ba91ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ba93ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844ba95ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844ba97ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ba99ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 70,
+          "hex_id": "844ba9bffffffff",
+          "quake_count": 7
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844ba9dffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844bab9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 60,
+          "hex_id": "844babbffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844bac1ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844bac3ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844bac5ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844bac7ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844bacbffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844bad1ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844bad3ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844bad5ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844bad7ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844bad9ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844baddffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844bae1ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844bae3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844bae5ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844bae9ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844baedffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844ec81ffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 130,
+          "hex_id": "844ec83ffffffff",
+          "quake_count": 13
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844ec87ffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 20,
+          "hex_id": "844ec8bffffffff",
+          "quake_count": 2
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ec8dffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ec93ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ec95ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 30,
+          "hex_id": "844ec99ffffffff",
+          "quake_count": 3
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844ec9bffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 50,
+          "hex_id": "844ecb1ffffffff",
+          "quake_count": 5
+        },
+        {
+          "height_value": 60,
+          "hex_id": "844ecb3ffffffff",
+          "quake_count": 6
+        },
+        {
+          "height_value": 130,
+          "hex_id": "844ecb7ffffffff",
+          "quake_count": 13
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ecb9ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 40,
+          "hex_id": "844ecbbffffffff",
+          "quake_count": 4
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844ecd3ffffffff",
+          "quake_count": 1
+        },
+        {
+          "height_value": 10,
+          "hex_id": "844eeb3ffffffff",
+          "quake_count": 1
+        }
+      ],
+      "elevationScale": 2000,
+      "extruded": true,
+      "getElevation": "@@=height_value",
+      "getFillColor": "@@=[255, 255 - quake_count * 4, 0]",
+      "getHexagon": "@@=hex_id",
+      "id": "29e005d8-3da5-49f1-8c47-c5d6e046107e",
+      "opacity": 0.5,
+      "pickable": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = true;
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration,
+          });
+
+  </script>
+</html>

@@ -7,3 +7,5 @@ App that aggregates all earthquake data across Japan, generate map of hexes to s
     - [] Figure out how to manage the data
 - [] Visualize Data
     - [] 3D Map with hexagons?
+
+https://earthquake.usgs.gov/fdsnws/event/1/
