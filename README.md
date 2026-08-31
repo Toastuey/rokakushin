@@ -3,7 +3,6 @@ App that aggregates all earthquake data across Japan, generate map of hexes to s
 
 # Tasks
 - Generalize and abstract logic to work generically
-- Fix file structure and layout (i.e. data in data folder, hex logic in hex files, etc)
 - Import more data
     - https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2023-01-01&endtime=2023-12-31&minmagnitude=3&minlatitude=24&maxlatitude=46&minlongitude=122&maxlongitude=146
 - Add the ability to query data dynamically based on user input / eventually web UI
