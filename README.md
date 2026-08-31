@@ -8,3 +8,4 @@ App that aggregates all earthquake data across Japan, generate map of hexes to s
 - Add the ability to query data dynamically based on user input / eventually web UI
 - Fine tune hex resolution and color until we find something that looks good
     - This will probably be a part of the frontend portion of this project and will be styled with CSS etc
+- Need to create a convention for accessing data
