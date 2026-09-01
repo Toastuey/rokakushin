@@ -4,12 +4,20 @@ from pathlib import Path
 RESOLUTION = 4
 HEIGHT_FLAT_SCALER = 10
 
+# Sorting Modes
+FREQUENCY_MODE = 0
+MEAN_MAGNITUDE_MODE = 1
+TOTAL_SEISMIC_MODE = 2
+MAX_MAGNITUDE_MODE = 3
+MEAN_DEPTH_MODE = 4
+MIN_DEPTH_MODE = 5
+
 # Data Related Constants
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 
 # Map Related Constants
-HEX_NAME = "quake_count"
+VALUE_COLUMN = "agg_value"
 HEX_ID = "hex_id"
 HEIGHT_VALUE = "height_value"
 ELEVATION_SCALE = 2000
@@ -17,3 +25,5 @@ COLOR_SENSITIVITY = 4
 COLOR_R = 255
 COLOR_B = 0
 COLOR_OPACITY = 0.6
+INITIAL_LAT = 36.19808449661593
+INITIAL_LON = 138.34844841422174

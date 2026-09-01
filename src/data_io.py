@@ -4,6 +4,22 @@ This file handles opening, reading, and storing data from the input files.
 import pandas as pd
 from src import constants
 
+def add_seismic_energy(df):
+    """
+    Calculates the total seismic energy released for each earthquake based on magnitude.
+    
+    Args:
+        param1: The dataframe to utilize.
+        
+    Returns:
+        A dataframe with a new energy related column appended.
+        
+    Raises:
+        None
+    """
+    df["energy"] = 10 ** (1.5 * df["mag"] + 4.8)
+    return df
+
 def select_relevant_columns(df):
     """
     Trim all unimportant data from our dataframe.
@@ -17,7 +33,7 @@ def select_relevant_columns(df):
     Raises:
         tbd
     """
-    return df[["latitude", "longitude", "mag", "place", "time", "year"]].rename(
+    return df[["latitude", "longitude", "mag", "place", "time", "year", "depth", "energy"]].rename(
         columns={"latitude": "lat", "longitude": "lon", "mag": "magnitude"})
 
 def load_earthquake_data(years, data_dir=constants.DATA_DIR, pattern="eq{year}.csv"):
