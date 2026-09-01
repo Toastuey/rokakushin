@@ -22,6 +22,20 @@ def convert_to_hex(inlat, inlon):
     return [h3.latlng_to_cell(lat, lon, constants.RESOLUTION) for lat, lon in zip(inlat, inlon)]
 
 
+def normalize_colors(agg, value_col):
+    min_val = agg[value_col].min()
+    max_val = agg[value_col].max()
+    
+    if max_val == min_val:
+        # avoid divide-by-zero if every hex has the same value
+        agg[constants.COLOR_VALUE] = 0
+    else:
+        agg[constants.COLOR_VALUE] = (
+            (agg[value_col] - min_val) / (max_val - min_val) * 255
+        )
+    return agg
+
+
 def create_agg(df, sortby=constants.FREQUENCY_MODE):
     """
     Creates a correct aggregate based on the data.
@@ -40,7 +54,7 @@ def create_agg(df, sortby=constants.FREQUENCY_MODE):
     match sortby:
         case constants.MEAN_MAGNITUDE_MODE:
             agg = df.groupby(constants.HEX_ID, as_index=False)["magnitude"].mean().rename(columns={"magnitude": constants.VALUE_COLUMN})
-            agg[constants.HEIGHT_VALUE] = agg[constants.VALUE_COLUMN] * constants.HEIGHT_FLAT_SCALER*10
+            agg[constants.HEIGHT_VALUE] = agg[constants.VALUE_COLUMN] * constants.HEIGHT_FLAT_SCALER
         case constants.MAX_MAGNITUDE_MODE:
             agg = df.groupby(constants.HEX_ID, as_index=False)["magnitude"].max().rename(columns={"magnitude": constants.VALUE_COLUMN})
             agg[constants.HEIGHT_VALUE] = agg[constants.VALUE_COLUMN] * constants.HEIGHT_FLAT_SCALER

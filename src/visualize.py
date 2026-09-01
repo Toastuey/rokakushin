@@ -19,10 +19,10 @@ def _fill_color(sortby=constants.FREQUENCY_MODE):
     """
     match sortby:
         case constants.MIN_DEPTH_MODE | constants.MEAN_DEPTH_MODE:
-            return f"[{constants.COLOR_R}, 0 + {constants.VALUE_COLUMN} * {constants.COLOR_SENSITIVITY}, {constants.COLOR_B}]"
+            return f"[{constants.COLOR_R}, 0 + {constants.COLOR_VALUE}, {constants.COLOR_B}]"
 
         case constants.FREQUENCY_MODE | constants.MAX_MAGNITUDE_MODE | constants.MEAN_MAGNITUDE_MODE | constants.TOTAL_SEISMIC_MODE | _:
-            return f"[{constants.COLOR_R}, 255 - {constants.VALUE_COLUMN} * {constants.COLOR_SENSITIVITY}, {constants.COLOR_B}]"
+            return f"[{constants.COLOR_R}, 255 - {constants.COLOR_VALUE}, {constants.COLOR_B}]"
 
 
 def render_map(agg, html_name, sorting_mode=constants.FREQUENCY_MODE):
