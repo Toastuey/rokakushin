@@ -5,7 +5,7 @@ from src import data_io, hex_processing, visualize, constants
 
 if __name__ == '__main__':
     # First get and trim down the relevant data we want
-    df = data_io.load_earthquake_data([2023])
+    df = data_io.load_earthquake_data(constants.ALL_YEARS)
     df = data_io.add_seismic_energy(df)
     df = data_io.select_relevant_columns(df)
 

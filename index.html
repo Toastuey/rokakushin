@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://unpkg.com/h3-js@4"></script>  
+  <script src="https://unpkg.com/deck.gl@latest/dist.min.js"></script>
+</head>
+<body style="margin:0;">
+  <div id="map" style="height:100vh;"></div>
+
+  <script>
+    async function loadMap() {
+      const response = await fetch("http://127.0.0.1:8000/api/hexdata?years=2011&years=2012&mode=mean");
+      const data = await response.json();
+
+      const hexLayer = new deck.H3HexagonLayer({
+        id: "hex_id",
+        data: data,
+        getHexagon: d => d.hex_id,
+        getFillColor: d => [255, 255 - d.color_value, 0],
+        getElevation: d => d.height_value,
+        elevationScale: 3000,
+        extruded: true,
+        pickable: true,
+      });
+
+      new deck.DeckGL({
+        container: "map",
+        initialViewState: {
+          longitude: 138,
+          latitude: 38,
+          zoom: 5,
+          pitch: 40,
+        },
+        controller: true,
+        layers: [hexLayer],
+      });
+    }
+
+    loadMap();
+  </script>
+</body>
+</html>
